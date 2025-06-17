@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
 abstract class Falier {
-  const Falier(this.errormessage);
-  final String errormessage;
+  const Falier(this.errorMessage);
+  final String errorMessage;
 }
 
 class ServerFalier extends Falier {
