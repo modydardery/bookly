@@ -9,7 +9,7 @@ class HomeRepoEmpl implements HomeRebo {
   HomeRepoEmpl(this.apiServices);
   ApiServices apiServices;
   @override
-  Future<Either<Falier, List<BookModel>>> fetchBestSellerBooks() async {
+  Future<Either<Falier, List<BookModel>>> fetcNewestBooks() async {
     try {
       var data = await apiServices.get(
         endpoint:

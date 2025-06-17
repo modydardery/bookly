@@ -8,9 +8,9 @@ part 'newest_book_state.dart';
 class NewestBookCubit extends Cubit<NewestBookState> {
   NewestBookCubit(this.homeRebo) : super(NewestBookInitial());
   HomeRebo homeRebo;
-  Future<void> featuredNewestBooks() async{
+  Future<void> featuredNewestBooks() async {
     emit(NewestBookLoading());
-    var result = await homeRebo.fetchBestSellerBooks();
+    var result = await homeRebo.fetcNewestBooks();
     return result.fold(
       (failure) {
         emit(NewestBooksFailer(failure.errorMessage));
