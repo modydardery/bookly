@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/app_routers.dart';
 
-class CustomeHorizontalListViewImage extends StatelessWidget {
-  CustomeHorizontalListViewImage({super.key, required this.bookCover});
+class CustomeListViewImage extends StatelessWidget {
+  CustomeListViewImage({super.key, required this.bookCover});
   final String bookCover;
   @override
   Widget build(BuildContext context) {

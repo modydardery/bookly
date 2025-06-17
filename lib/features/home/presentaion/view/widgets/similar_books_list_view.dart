@@ -12,7 +12,10 @@ class SimilaBooksListView extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return  CustomeHorizontalListViewImage(bookCover: 'https://m.media-amazon.com/images/I/71-++hbbERL._AC_SY879_.jpg',);
+          return CustomeListViewImage(
+            bookCover:
+                'https://m.media-amazon.com/images/I/71-++hbbERL._AC_SY879_.jpg',
+          );
         },
       ),
     );

@@ -18,7 +18,7 @@ class CustomeHorizontalListView extends StatelessWidget {
               itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return CustomeHorizontalListViewImage(
+                return CustomeListViewImage(
                   bookCover:
                       state.books[index].volumeInfo?.imageLinks?.thumbnail ??
                       'https://m.media-amazon.com/images/I/71-++hbbERL._AC_SY879_.jpg',

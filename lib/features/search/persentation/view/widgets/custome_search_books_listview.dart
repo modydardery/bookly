@@ -15,10 +15,16 @@ class SearchResultListView extends StatelessWidget {
           itemCount: 10,
           padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
-            return BookListViewItem();
+            return Container(
+              margin: const EdgeInsets.symmetric(vertical: 10.0),
+              child:SizedBox()
+            );
           },
         ),
       ),
     );
   }
 }
+/* BookListViewItem(
+                Book: null, // Replace with actual book model when available
+              ), */

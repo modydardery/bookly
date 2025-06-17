@@ -2,13 +2,16 @@ import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/Assets.dart';
 import 'package:bookly/core/utils/app_routers.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentaion/view/widgets/book_rating.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat/cat.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+  const BookListViewItem({super.key, required this.Book});
+  final BookModel Book;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +22,28 @@ class BookListViewItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: SizedBox(
-          height: 110,
+          height: 140,
           child: Row(
             children: [
               AspectRatio(
                 aspectRatio: 70 / 105,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      image: AssetImage(AssetsData.bookCover),
-                      fit: BoxFit.fill,
-                    ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(9),
+                  child: CachedNetworkImage(
+                    imageUrl: Book.volumeInfo?.imageLinks?.thumbnail ?? '',
+                    fit: BoxFit.fill,
+                    errorWidget:
+                        (context, url, error) => Icon(
+                          Icons.menu_book_rounded,
+                          size: 70,
+                          color: Colors.white54,
+                        ),
+                    placeholder:
+                        (context, url) => Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.white54,
+                          ),
+                        ),
                   ),
                 ),
               ),
@@ -42,7 +55,7 @@ class BookListViewItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.58,
                       child: Text(
-                        'Harry Potter And The Goblits Of Fire',
+                        Book.volumeInfo?.title ?? 'very interisting book',
                         style: Styles.textstyle20.copyWith(
                           fontFamily: KGTSectraFine,
                         ),
@@ -50,25 +63,32 @@ class BookListViewItem extends StatelessWidget {
                         maxLines: 2,
                       ),
                     ),
-                    const SizedBox(height: 3),
+                    const SizedBox(height: 10),
                     Text(
-                      'J.K. Rowling',
+                      Book.volumeInfo?.authors?.isNotEmpty == true
+                          ? Book.volumeInfo!.authors!.first
+                          : 'No Author',
                       style: Styles.textstyle14.copyWith(
                         color: Color(0xff707070),
                       ),
                     ),
+                    Spacer(flex: 4),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '19.99 €',
+                          'Free',
                           style: Styles.textstyle20.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        BookRating(),
+                        BookRating(
+                          rating: Book.volumeInfo?.averageRating ?? 4.5,
+                          reviewsCount: Book.volumeInfo?.ratingsCount ?? 256,
+                        ),
                       ],
                     ),
+                    Spacer(flex: 3),
                   ],
                 ),
               ),
