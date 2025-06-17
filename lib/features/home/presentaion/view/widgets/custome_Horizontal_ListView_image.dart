@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_routers.dart';
 
 class CustomeHorizontalListViewImage extends StatelessWidget {
-  const CustomeHorizontalListViewImage({super.key});
-
+  CustomeHorizontalListViewImage({super.key, required this.bookCover});
+  final String bookCover;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +20,7 @@ class CustomeHorizontalListViewImage extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(AssetsData.bookCover),
+                image: NetworkImage(bookCover),
                 fit: BoxFit.fill,
               ),
               borderRadius: BorderRadius.circular(14),

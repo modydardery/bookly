@@ -1,4 +1,4 @@
-
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentaion/manager/fearture_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentaion/view/widgets/custome_Horizontal_ListView_image.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +15,14 @@ class CustomeHorizontalListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .26,
             child: ListView.builder(
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return const CustomeHorizontalListViewImage();
+                return CustomeHorizontalListViewImage(
+                  bookCover:
+                      state.books[index].volumeInfo?.imageLinks?.thumbnail ??
+                      'https://m.media-amazon.com/images/I/71-++hbbERL._AC_SY879_.jpg',
+                );
               },
             ),
           );
