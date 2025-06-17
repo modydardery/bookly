@@ -13,7 +13,7 @@ class CustomeHorizontalListView extends StatelessWidget {
       builder: (context, state) {
         if (state is FeaturedBooksSucseess) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * .26,
+            height: MediaQuery.of(context).size.height * .30,
             child: ListView.builder(
               itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
