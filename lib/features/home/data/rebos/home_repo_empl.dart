@@ -51,7 +51,7 @@ class HomeRepoEmpl implements HomeRebo {
   Future<Either<Falier, List<BookModel>>> fetchSimilarBooks({required String category}) async {
     try {
       var data = await apiServices.get(
-        endpoint: 'volumes?Filtering=free-ebooks&q=programming&Sorting=relevance',
+        endpoint: 'volumes?Filtering=free-ebooks&q=programming&Sorting=$category',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
