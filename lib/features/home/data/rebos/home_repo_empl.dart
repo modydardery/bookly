@@ -9,7 +9,7 @@ class HomeRepoEmpl implements HomeRebo {
   HomeRepoEmpl(this.apiServices);
   ApiServices apiServices;
   @override
-  Future<Either<Falier, List<BookModel>>> fetcNewestBooks() async {
+  Future<Either<Falier, List<BookModel>>> fetchNewestBooks() async {
     try {
       var data = await apiServices.get(
         endpoint:
@@ -33,6 +33,25 @@ class HomeRepoEmpl implements HomeRebo {
     try {
       var data = await apiServices.get(
         endpoint: 'volumes?Filtering=free-ebooks&q=programming',
+      );
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFalier.fromDioError(e));
+      }
+      return left(ServerFalier(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Falier, List<BookModel>>> fetchSimilarBooks({required String category}) async {
+    try {
+      var data = await apiServices.get(
+        endpoint: 'volumes?Filtering=free-ebooks&q=programming&Sorting=relevance',
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
