@@ -31,14 +31,7 @@ class CostumeButton extends StatelessWidget {
 
           backgroundColor: backgroundColor,
         ),
-        onPressed: () async {
-          Uri url = Uri.parse(book.volumeInfo?.previewLink ?? 'https://www.google.com');
-          if (await canLaunchUrl(url)) {
-            await launchUrl(url);
-          } else {
-            throw 'Could not launch $url';
-          }
-        },
+        onPressed: onPressed,
         child: Text(
           text,
           style: Styles.textstyle18.copyWith(
