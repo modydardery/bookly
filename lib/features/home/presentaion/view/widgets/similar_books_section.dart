@@ -8,18 +8,6 @@ class SimilaBooksSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'You can also like',
-            style: Styles.textstyle14.copyWith(fontWeight: FontWeight.w600),
-          ),
-        ),
-        const SizedBox(height: 10),
-        const SimilaBooksListView(),
-      ],
-    );
+    return Column(children: [const SizedBox()]);
   }
 }

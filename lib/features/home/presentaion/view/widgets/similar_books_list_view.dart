@@ -15,17 +15,18 @@ class SimilaBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .15,
             child: ListView.builder(
+              itemCount: state.books.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return CustomeListViewImage(
                   bookCover:
+                      state.books[index].volumeInfo?.imageLinks?.thumbnail ??
                       'https://m.media-amazon.com/images/I/71-++hbbERL._AC_SY879_.jpg',
                 );
               },
             ),
           );
-        }
-        else if(state is SimilarBookFailer){
+        } else if (state is SimilarBookFailer) {
           return Center(
             child: Text(
               state.errorMessage,
@@ -33,9 +34,7 @@ class SimilaBooksListView extends StatelessWidget {
             ),
           );
         } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

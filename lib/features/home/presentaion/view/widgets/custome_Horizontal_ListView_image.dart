@@ -8,6 +8,7 @@ import '../../../../../core/utils/app_routers.dart';
 class CustomeListViewImage extends StatelessWidget {
   CustomeListViewImage({super.key, required this.bookCover});
   final String bookCover;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,24 +17,19 @@ class CustomeListViewImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: AspectRatio(
           aspectRatio: 120 / 193.3,
-          child: GestureDetector(
-            onTap: () {
-              GoRouter.of(context).push(AppRouters.KBookDetailsView);
-            },
-            child: CachedNetworkImage(
-              imageUrl: bookCover,
-              fit: BoxFit.fill,
-              errorWidget:
-                  (context, url, error) => Icon(
-                    Icons.menu_book_rounded,
-                    size: 70,
-                    color: Colors.white54,
-                  ),
-              placeholder:
-                  (context, url) => Center(
-                    child: CircularProgressIndicator(color: Colors.white54),
-                  ),
-            ),
+          child: CachedNetworkImage(
+            imageUrl: bookCover,
+            fit: BoxFit.fill,
+            errorWidget:
+                (context, url, error) => Icon(
+                  Icons.menu_book_rounded,
+                  size: 70,
+                  color: Colors.white54,
+                ),
+            placeholder:
+                (context, url) => Center(
+                  child: CircularProgressIndicator(color: Colors.white54),
+                ),
           ),
         ),
       ),
