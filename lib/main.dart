@@ -4,6 +4,8 @@ import 'package:bookly/core/utils/app_routers.dart';
 import 'package:bookly/features/home/data/rebos/home_repo_empl.dart';
 import 'package:bookly/features/home/presentaion/manager/fearture_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentaion/manager/newest_books_cubit/newest_book_cubit.dart';
+import 'package:bookly/features/search/data/repos/search_repo_empl.dart';
+import 'package:bookly/features/search/persentation/manager/cubit/search_feature_cubit.dart';
 import 'package:cat/cat.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
                   NewestBookCubit(HomeRepoEmpl(ApiServices(Dio())))
                     ..fetchdNewestBooks(),
         ),
+        
       ],
       child: MaterialApp.router(
         routerConfig: AppRouters.routers,

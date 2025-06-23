@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/utils/app_routers.dart';
 
 class CustomeListViewImage extends StatelessWidget {
-  CustomeListViewImage({super.key, required this.bookCover});
+  const CustomeListViewImage({super.key, required this.bookCover});
   final String bookCover;
 
   @override

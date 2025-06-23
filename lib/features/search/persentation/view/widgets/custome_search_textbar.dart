@@ -1,12 +1,20 @@
+import 'package:bookly/features/search/persentation/manager/cubit/search_feature_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 class CustomeSearchTextBar extends StatelessWidget {
-  const CustomeSearchTextBar({super.key});
-
+  const CustomeSearchTextBar({super.key, required this.searchController});
+  final TextEditingController searchController;
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: searchController,
+      onSubmitted: (value) {
+        BlocProvider.of<SearchFeatureCubit>(
+          context,
+        ).fetchSearchedBooks(bookTitle: searchController.text);
+      },
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(90)),

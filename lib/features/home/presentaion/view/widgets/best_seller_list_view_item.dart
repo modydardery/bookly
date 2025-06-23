@@ -1,12 +1,10 @@
 import 'package:bookly/constants.dart';
-import 'package:bookly/core/utils/Assets.dart';
 import 'package:bookly/core/utils/app_routers.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentaion/view/widgets/book_rating.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat/cat.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {

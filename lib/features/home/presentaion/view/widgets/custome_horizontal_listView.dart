@@ -1,5 +1,4 @@
 import 'package:bookly/core/utils/app_routers.dart';
-import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentaion/manager/fearture_books_cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentaion/view/widgets/custome_Horizontal_ListView_image.dart';
 import 'package:flutter/material.dart';

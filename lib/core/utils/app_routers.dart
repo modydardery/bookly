@@ -1,10 +1,11 @@
 import 'package:bookly/core/api/api_services.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
-import 'package:bookly/features/home/data/rebos/home_rebo.dart';
 import 'package:bookly/features/home/data/rebos/home_repo_empl.dart';
 import 'package:bookly/features/home/presentaion/manager/similar_book_cubit/similar_book_cubit.dart';
 import 'package:bookly/features/home/presentaion/view/book_details_view.dart';
 import 'package:bookly/features/home/presentaion/view/home_view.dart';
+import 'package:bookly/features/search/data/repos/search_repo_empl.dart';
+import 'package:bookly/features/search/persentation/manager/cubit/search_feature_cubit.dart';
 import 'package:bookly/features/search/persentation/view/search_view.dart';
 import 'package:bookly/features/splash/presentation/view/splashView.dart';
 import 'package:dio/dio.dart';
@@ -27,14 +28,19 @@ abstract class AppRouters {
         path: KBookDetailsView,
         builder:
             (context, state) => BlocProvider(
-              create: (context) => SimilarBookCubit(HomeRepoEmpl(ApiServices(Dio()))),
-              child:  BookDetailsView(book: state.extra as BookModel,),
-              
+              create:
+                  (context) =>
+                      SimilarBookCubit(HomeRepoEmpl(ApiServices(Dio()))),
+              child: BookDetailsView(book: state.extra as BookModel),
             ),
       ),
       GoRoute(
         path: KSearchView,
-        builder: (context, state) => const SearchView(),
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => SearchFeatureCubit(SearchRepoEmpl(ApiServices(Dio()))),
+              child: SearchView(),
+            ),
       ),
     ],
   );

@@ -4,7 +4,6 @@ import 'package:bookly/features/home/presentaion/view/widgets/costume_book_detai
 import 'package:bookly/features/home/presentaion/view/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'book_details_section.dart';
-import 'similar_books_section.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key, required this.book});
@@ -33,7 +32,6 @@ class BookDetailsViewBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const SimilaBooksSection(),
                 SimilaBooksListView(),
                 // const SizedBox(height: 20),
               ],
