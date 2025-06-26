@@ -1,9 +1,6 @@
-import 'package:bookly/core/utils/Assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../../../core/utils/app_routers.dart';
 
 class CustomeListViewImage extends StatelessWidget {
   const CustomeListViewImage({super.key, required this.bookCover});
